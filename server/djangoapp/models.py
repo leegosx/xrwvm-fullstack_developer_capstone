@@ -1,25 +1,33 @@
-# Uncomment the following imports before adding the Model code
+from django.db import models
+from django.utils.timezone import now
+from django.core.validators import MaxValueValidator, MinValueValidator
 
-# from django.db import models
-# from django.utils.timezone import now
-# from django.core.validators import MaxValueValidator, MinValueValidator
+class CarMake(models.Model):
+    name = models.CharField(max_length=255, unique=True, help_text="Name of the car make")
+    description = models.TextField(help_text="Description of the car make")
+    founded = models.DateField(null=True, blank=True, help_text="Date the company was founded")
+    country = models.CharField(max_length=100, blank=True, help_text="Country of origin")
 
+class CarModel(models.Model):
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE, related_name='models')
+    name = models.CharField(max_length=255, help_text="Name of the car model")
+    CAR_TYPES = [
+        ("SEDAN", 'Sedan'),
+        ("SUV", 'SUV'),
+        ("WAGON", 'Wagon'),
+        ("COUPE", 'Coupe'),
+        ("HATCHBACK", 'Hatchback'),
+    ]
 
-# Create your models here.
+    type = models.CharField(max_length=50, choices=CAR_TYPES, help_text="Type of the car model")
+    year = models.IntegerField(default=2023,
+        validators=[
+            MaxValueValidator(2023),
+            MinValueValidator(2015)], 
+            help_text="Model year of the car"
+            )
+    price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Price of the car model")
+    is_available = models.BooleanField(default=True, help_text="Availability of the car model")
 
-# <HINT> Create a Car Make model `class CarMake(models.Model)`:
-# - Name
-# - Description
-# - Any other fields you would like to include in car make model
-# - __str__ method to print a car make object
-
-
-# <HINT> Create a Car Model model `class CarModel(models.Model):`:
-# - Many-To-One relationship to Car Make model (One Car Make has many
-# Car Models, using ForeignKey field)
-# - Name
-# - Type (CharField with a choices argument to provide limited choices
-# such as Sedan, SUV, WAGON, etc.)
-# - Year (IntegerField) with min value 2015 and max value 2023
-# - Any other fields you would like to include in car model
-# - __str__ method to print a car make object
+    def __str__(self):
+        return f"{self.name} ({self.year}) - {self.type}"
