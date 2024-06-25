@@ -26,7 +26,6 @@ class CarModel(models.Model):
             MinValueValidator(2015)], 
             help_text="Model year of the car"
             )
-    price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Price of the car model")
     is_available = models.BooleanField(default=True, help_text="Availability of the car model")
 
     def __str__(self):
