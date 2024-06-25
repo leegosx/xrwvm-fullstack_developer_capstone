@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 (
                     "name",
                     models.CharField(
-                        help_text="Name of the car make", max_length=255, unique=True
+                        max_length=255, unique=True, help_text="Name of the car make"
                     ),
                 ),
                 (
@@ -36,13 +36,13 @@ class Migration(migrations.Migration):
                 (
                     "founded",
                     models.DateField(
-                        blank=True, help_text="Date the company was founded", null=True
+                        blank=True, null=True, help_text="Date the company was founded"
                     ),
                 ),
                 (
                     "country",
                     models.CharField(
-                        blank=True, help_text="Country of origin", max_length=100
+                        max_length=100, blank=True, help_text="Country of origin"
                     ),
                 ),
             ],
@@ -61,11 +61,12 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "name",
-                    models.CharField(help_text="Name of the car model", max_length=255),
+                    models.CharField(max_length=255, help_text="Name of the car model"),
                 ),
                 (
                     "type",
                     models.CharField(
+                        max_length=50,
                         choices=[
                             ("SEDAN", "Sedan"),
                             ("SUV", "SUV"),
@@ -74,18 +75,17 @@ class Migration(migrations.Migration):
                             ("HATCHBACK", "Hatchback"),
                         ],
                         help_text="Type of the car model",
-                        max_length=50,
                     ),
                 ),
                 (
                     "year",
                     models.IntegerField(
                         default=2023,
-                        help_text="Model year of the car",
                         validators=[
                             django.core.validators.MaxValueValidator(2023),
                             django.core.validators.MinValueValidator(2015),
                         ],
+                        help_text="Model year of the car",
                     ),
                 ),
                 (
