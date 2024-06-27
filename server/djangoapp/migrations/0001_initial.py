@@ -12,81 +12,89 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="CarMake",
             fields=[
-                (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                (
-                    "name",
-                    models.CharField(
-                        max_length=255, unique=True, help_text="Name of the car make"
-                    ),
-                ),
-                (
-                    "description",
-                    models.TextField(help_text="Description of the car make"),
-                ),
-                (
-                    "founded",
-                    models.DateField(
-                        blank=True, null=True, help_text="Date the company was founded"
-                    ),
-                ),
-                (
-                    "country",
-                    models.CharField(
-                        max_length=100, blank=True, help_text="Country of origin"
-                    ),
-                ),
+            (
+            "id",
+            models.BigAutoField(
+            auto_created=True,
+            primary_key=True,
+            serialize=False,
+            verbose_name="ID",
+            ),
+            ),
+            (
+            "name",
+            models.CharField(
+            max_length=255, 
+            unique=True, 
+            help_text="Name of the car make"
+            ),
+            ),
+            (
+            "description",
+            models.TextField(help_text="Description of the car make"),
+            ),
+            (
+            "founded",
+            models.DateField(
+            blank=True, null=True, 
+            help_text="Date the company was founded"
+            ),
+            ),
+            (
+            "country",
+            models.CharField(
+            max_length=100, 
+            blank=True, 
+            help_text="Country of origin"
+            ),
+            ),
             ],
         ),
         migrations.CreateModel(
-            name="CarModel",
-            fields=[
-                (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                (
-                    "name",
-                    models.CharField(
-                        max_length=255, help_text="Name of the car model"
-                    ),
-                ),
-                (
-                    "car_make",
-                    models.ForeignKey(
-                        "CarMake",
-                        on_delete=models.CASCADE,
-                        related_name="models",
-                        help_text="The car make associated with this model"
-                    ),
-                ),
-                (
-                    "type",
-                    models.CharField(
-                        max_length=100,
-                        choices=[
-                            ("SEDAN", "Sedan"), ("SUV", "SUV"), ("HATCHBACK", "Hatchback"),
-                            ("CONVERTIBLE", "Convertible"), ("COUPE", "Coupe"), ("WAGON", "Wagon"),
-                            ("VAN", "Van"), ("TRUCK", "Truck")
-                        ],
-                    ),
-                ),
-                (
-                    "price",
-                    models.DecimalField(
-                        max_digits=10, decimal_places=2, help_text="Price of the car model"
+        name="CarModel",
+        fields=[
+        (
+        "id",
+        models.BigAutoField(
+        auto_created=True,
+        primary_key=True,
+        serialize=False,
+        verbose_name="ID",
+        ),
+        ),
+        (
+        "name",
+        models.CharField(
+        max_length=255, help_text="Name of the car model"
+        ),
+        ),
+        (
+        "car_make",
+        models.ForeignKey(
+        "CarMake",
+        on_delete=models.CASCADE,
+        related_name="models",
+        help_text="The car make associated with this model"
+        ),
+        ),
+        (
+        "type",
+        models.CharField(
+        max_length=100,
+        choices=[
+        ("SEDAN", "Sedan"), ("SUV", "SUV"), 
+        ("HATCHBACK", "Hatchback"),
+        ("CONVERTIBLE", "Convertible"), 
+        ("COUPE", "Coupe"), ("WAGON", "Wagon"),
+        ("VAN", "Van"), ("TRUCK", "Truck")
+        ],
+        ),
+        ),
+        (
+        "price",
+        models.DecimalField(
+        max_digits=10, decimal_places=2, 
+        help_text="Price of the car model"
                     ),
                 ),
             ],
