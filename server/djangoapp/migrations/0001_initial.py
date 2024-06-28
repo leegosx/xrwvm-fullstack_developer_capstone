@@ -26,23 +26,30 @@ class Migration(migrations.Migration):
                 (
                     "name",
                     models.CharField(
-                        max_length=255, unique=True, help_text="Name of the car make"
+                        max_length=255, 
+                        unique=True, 
+                        help_text="Name of the car make"
                     ),
                 ),
                 (
                     "description",
-                    models.TextField(help_text="Description of the car make"),
+                    models.TextField(
+                        help_text="Description of the car make"),
                 ),
                 (
                     "founded",
                     models.DateField(
-                        blank=True, null=True, help_text="Date the company was founded"
+                        blank=True, 
+                        null=True, 
+                        help_text="Date the company was founded"
                     ),
                 ),
                 (
                     "country",
                     models.CharField(
-                        max_length=100, blank=True, help_text="Country of origin"
+                        max_length=100, 
+                        blank=True, 
+                        help_text="Country of origin"
                     ),
                 ),
             ],
@@ -61,7 +68,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "name",
-                    models.CharField(max_length=255, help_text="Name of the car model"),
+                    models.CharField(
+                        max_length=255, help_text="Name of the car model"
+                    ),
                 ),
                 (
                     "type",
