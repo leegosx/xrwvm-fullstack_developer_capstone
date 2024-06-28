@@ -6,82 +6,80 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+
     dependencies = [
-        ("djangoapp", "0002_rename_founded_carmake_year"),
+        ('djangoapp', '0002_rename_founded_carmake_year'),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name="carmodel",
-            name="is_available",
+            model_name='carmodel',
+            name='is_available',
         ),
         migrations.AddField(
-            model_name="carmodel",
-            name="price",
-            field=models.IntegerField(
-                default=10000,
-                validators=[
-                    django.core.validators.MaxValueValidator(999999999),
-                    django.core.validators.MinValueValidator(1),
-                ],
-            ),
+            model_name='carmodel',
+            name='price',
+            field=models.IntegerField(default=10000,
+            validators=[
+                django.core.validators.MaxValueValidator(999999999),
+                django.core.validators.MinValueValidator(1)]
+                ),
         ),
         migrations.AlterField(
-            model_name="carmake",
-            name="country",
+            model_name='carmake',
+            name='country',
             field=models.TextField(),
         ),
         migrations.AlterField(
-            model_name="carmake",
-            name="description",
+            model_name='carmake',
+            name='description',
             field=models.TextField(),
         ),
         migrations.AlterField(
-            model_name="carmake",
-            name="name",
+            model_name='carmake',
+            name='name',
             field=models.CharField(max_length=100),
         ),
         migrations.AlterField(
-            model_name="carmake",
-            name="year",
+            model_name='carmake',
+            name='year',
             field=models.IntegerField(
                 default=2023,
                 validators=[
-                    django.core.validators.MaxValueValidator(2023),
-                    django.core.validators.MinValueValidator(1800),
-                ],
-            ),
+                django.core.validators.MaxValueValidator(2023),
+                django.core.validators.MinValueValidator(1800)]
+                ),
         ),
         migrations.AlterField(
-            model_name="carmodel",
-            name="car_make",
+            model_name='carmodel',
+            name='car_make',
             field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE, to="djangoapp.carmake"
-            ),
+                on_delete=django.db.models.deletion.CASCADE,
+                to='djangoapp.carmake'),
         ),
         migrations.AlterField(
-            model_name="carmodel",
-            name="name",
+            model_name='carmodel',
+            name='name',
             field=models.CharField(max_length=100),
         ),
         migrations.AlterField(
-            model_name="carmodel",
-            name="type",
+            model_name='carmodel',
+            name='type',
             field=models.CharField(
-                choices=[("SEDAN", "Sedan"), ("SUV", "SUV"), ("WAGON", "Wagon")],
-                default="SUV",
-                max_length=10,
-            ),
+                choices=[('SEDAN', 'Sedan'),
+                         ('SUV', 'SUV'),
+                         ('WAGON', 'Wagon')],
+                         default='SUV',
+                         max_length=10),
         ),
         migrations.AlterField(
-            model_name="carmodel",
-            name="year",
+            model_name='carmodel',
+            name='year',
             field=models.IntegerField(
                 default=2023,
                 validators=[
-                    django.core.validators.MaxValueValidator(2023),
-                    django.core.validators.MinValueValidator(2015),
-                ],
-            ),
+                django.core.validators.MaxValueValidator(2023),
+                django.core.validators.MinValueValidator(2015)]
+                ),
         ),
     ]

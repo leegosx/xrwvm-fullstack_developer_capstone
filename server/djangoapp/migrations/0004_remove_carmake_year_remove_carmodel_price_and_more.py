@@ -7,7 +7,9 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("djangoapp", "0003_remove_carmodel_is_available_carmodel_price_and_more"),
+        ("djangoapp",
+        "0003_remove_carmodel_is_available_carmodel_price_and_more"
+        ),
     ]
 
     operations = [
