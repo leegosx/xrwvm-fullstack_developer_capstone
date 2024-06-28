@@ -6,90 +6,84 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('djangoapp', 
-         '0003_remove_carmodel_is_available_carmodel_price_and_more'),
+        ("djangoapp", "0003_remove_carmodel_is_available_carmodel_price_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='carmake',
-            name='year',
+            model_name="carmake",
+            name="year",
         ),
         migrations.RemoveField(
-            model_name='carmodel',
-            name='price',
+            model_name="carmodel",
+            name="price",
         ),
         migrations.AddField(
-            model_name='carmodel',
-            name='is_available',
+            model_name="carmodel",
+            name="is_available",
             field=models.BooleanField(
-                default=True, 
-                help_text='Availability of the car model'
-                ),
+                default=True, help_text="Availability of the car model"
+            ),
         ),
         migrations.AlterField(
-            model_name='carmake',
-            name='country',
+            model_name="carmake",
+            name="country",
             field=models.CharField(
-                blank=True, 
-                help_text='Country of origin', 
-                max_length=100),
+                blank=True, help_text="Country of origin", max_length=100
+            ),
         ),
         migrations.AlterField(
-            model_name='carmake',
-            name='description',
-            field=models.TextField(
-                help_text='Description of the car make'
-                ),
+            model_name="carmake",
+            name="description",
+            field=models.TextField(help_text="Description of the car make"),
         ),
         migrations.AlterField(
-            model_name='carmake',
-            name='name',
+            model_name="carmake",
+            name="name",
             field=models.CharField(
-                help_text='Name of the car make', 
-                max_length=255, 
-                unique=True),
+                help_text="Name of the car make", max_length=255, unique=True
+            ),
         ),
         migrations.AlterField(
-            model_name='carmodel',
-            name='car_make',
+            model_name="carmodel",
+            name="car_make",
             field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE, 
-                related_name='models', 
-                to='djangoapp.carmake'
-                ),
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="models",
+                to="djangoapp.carmake",
+            ),
         ),
         migrations.AlterField(
-            model_name='carmodel',
-            name='name',
+            model_name="carmodel",
+            name="name",
+            field=models.CharField(help_text="Name of the car model", max_length=255),
+        ),
+        migrations.AlterField(
+            model_name="carmodel",
+            name="type",
             field=models.CharField(
-                help_text='Name of the car model',
-                max_length=255),
+                choices=[
+                    ("SEDAN", "Sedan"),
+                    ("SUV", "SUV"),
+                    ("WAGON", "Wagon"),
+                    ("COUPE", "Coupe"),
+                    ("HATCHBACK", "Hatchback"),
+                ],
+                help_text="Type of the car model",
+                max_length=50,
+            ),
         ),
         migrations.AlterField(
-            model_name='carmodel',
-            name='type',
-            field=models.CharField(
-                choices=[('SEDAN', 'Sedan'),
-                        ('SUV', 'SUV'),
-                        ('WAGON', 'Wagon'),
-                        ('COUPE', 'Coupe'),
-                        ('HATCHBACK', 'Hatchback')],
-                        help_text='Type of the car model',
-                        max_length=50
-                        ),
-        ),
-        migrations.AlterField(
-            model_name='carmodel',
-            name='year',
+            model_name="carmodel",
+            name="year",
             field=models.IntegerField(
-                default=2023, 
-                help_text='Model year of the car', 
+                default=2023,
+                help_text="Model year of the car",
                 validators=[
-                    django.core.validators.MaxValueValidator(2023), 
-                    django.core.validators.MinValueValidator(2015)]
-                    ),
+                    django.core.validators.MaxValueValidator(2023),
+                    django.core.validators.MinValueValidator(2015),
+                ],
+            ),
         ),
     ]

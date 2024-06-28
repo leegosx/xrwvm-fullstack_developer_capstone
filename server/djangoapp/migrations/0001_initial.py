@@ -21,37 +21,29 @@ class Migration(migrations.Migration):
                         primary_key=True,
                         serialize=False,
                         verbose_name="ID",
-                    )
+                    ),
                 ),
                 (
                     "name",
                     models.CharField(
-                        max_length=255,
-                        unique=True,
-                        help_text="Name of the car make"
-                    )
+                        max_length=255, unique=True, help_text="Name of the car make"
+                    ),
                 ),
                 (
                     "description",
-                    models.TextField(
-                        help_text="Description of the car make"
-                    )
+                    models.TextField(help_text="Description of the car make"),
                 ),
                 (
                     "founded",
                     models.DateField(
-                        blank=True,
-                        null=True,
-                        help_text="Date the company was founded"
-                    )
+                        blank=True, null=True, help_text="Date the company was founded"
+                    ),
                 ),
                 (
                     "country",
                     models.CharField(
-                        max_length=100,
-                        blank=True,
-                        help_text="Country of origin"
-                    )
+                        max_length=100, blank=True, help_text="Country of origin"
+                    ),
                 ),
             ],
         ),
@@ -65,14 +57,11 @@ class Migration(migrations.Migration):
                         primary_key=True,
                         serialize=False,
                         verbose_name="ID",
-                    )
+                    ),
                 ),
                 (
                     "name",
-                    models.CharField(
-                        max_length=255,
-                        help_text="Name of the car model"
-                    )
+                    models.CharField(max_length=255, help_text="Name of the car model"),
                 ),
                 (
                     "type",
@@ -85,8 +74,8 @@ class Migration(migrations.Migration):
                             ("COUPE", "Coupe"),
                             ("HATCHBACK", "Hatchback"),
                         ],
-                        help_text="Type of the car model"
-                    )
+                        help_text="Type of the car model",
+                    ),
                 ),
                 (
                     "year",
@@ -94,25 +83,24 @@ class Migration(migrations.Migration):
                         default=2023,
                         validators=[
                             django.core.validators.MaxValueValidator(2023),
-                            django.core.validators.MinValueValidator(2015)
+                            django.core.validators.MinValueValidator(2015),
                         ],
-                        help_text="Model year of the car"
-                    )
+                        help_text="Model year of the car",
+                    ),
                 ),
                 (
                     "is_available",
                     models.BooleanField(
-                        default=True,
-                        help_text="Availability of the car model"
-                    )
+                        default=True, help_text="Availability of the car model"
+                    ),
                 ),
                 (
                     "car_make",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="models",
-                        to="djangoapp.carmake"
-                    )
+                        to="djangoapp.carmake",
+                    ),
                 ),
             ],
         ),
