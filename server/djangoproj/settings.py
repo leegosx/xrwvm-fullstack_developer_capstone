@@ -31,11 +31,17 @@ DEBUG = True
 # todo: change the urls each time it is deployed
 ALLOWED_HOSTS = [
     "localhost",
-    "https://klimenkodmit-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai",
+    (
+        "https://klimenkodmit-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01."
+        "proxy.cognitiveclass.ai"
+    ),
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://klimenkodmit-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai"
+    (
+        "https://klimenkodmit-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01."
+        "proxy.cognitiveclass.ai"
+    ),
 ]
 
 REST_FRAMEWORK = {
