@@ -7,9 +7,6 @@ class CarMake(models.Model):
         max_length=255, unique=True, help_text="Name of the car make"
     )
     description = models.TextField(help_text="Description of the car make")
-    founded = models.DateField(
-        null=True, blank=True, help_text="Date the company was founded"
-    )
     country = models.CharField(
         max_length=100, blank=True, help_text="Country of origin"
     )
