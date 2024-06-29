@@ -23,6 +23,7 @@ const Dealer = () => {
   let dealer_url = root_url+`djangoapp/dealer/${id}`;
   let reviews_url = root_url+`djangoapp/reviews/dealer/${id}`;
   let post_review = root_url+`postreview/${id}`;
+  let search_cars_url = `/searchcars/${id}`;
   
   const get_dealer = async ()=>{
     const res = await fetch(dealer_url, {
@@ -85,9 +86,10 @@ return(
           <div className="reviewer">{review.name} {review.car_make} {review.car_model} {review.car_year}</div>
         </div>
       ))}
-    </div>  
-  </div>
-)
+    </div>
+        <a href={search_cars_url}>Search Cars</a>
+      </div>
+  );
 }
 
 export default Dealer
